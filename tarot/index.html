@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>神秘塔罗牌占卜</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+
+  <div class="container">
+    <header class="header">
+      <div class="moon">
+        <div class="moon-crater"></div>
+        <div class="moon-crater small"></div>
+      </div>
+      <h1>✨ 神秘塔罗牌占卜 ✨</h1>
+      <p class="subtitle">揭示命运的密码，探索内心的真相</p>
+    </header>
+
+    <section class="spread-selection" id="spreadSelection">
+      <h2>选择你的牌阵</h2>
+      <div class="spread-options">
+        <div class="spread-card" data-spread="single">
+          <div class="spread-icon">🌙</div>
+          <h3>单张牌阵</h3>
+          <p>快速获取今日指引与启示</p>
+        </div>
+        <div class="spread-card" data-spread="three">
+          <div class="spread-icon">⭐</div>
+          <h3>三张牌阵</h3>
+          <p>过去·现在·未来的命运轨迹</p>
+        </div>
+        <div class="spread-card" data-spread="celtic">
+          <div class="spread-icon">🔮</div>
+          <h3>凯尔特十字</h3>
+          <p>全面解析当前处境的深层含义</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="question-section" id="questionSection">
+      <h2>在心中默念你的问题</h2>
+      <textarea class="question-input" id="questionInput" placeholder="例如：我的爱情运势如何？未来事业走向怎样？" rows="3"></textarea>
+      <button class="draw-btn" id="drawBtn">开始占卜</button>
+    </section>
+
+    <section class="card-area" id="cardArea">
+      <div class="cards-layout" id="cardsLayout"></div>
+    </section>
+
+    <section class="reading-section" id="readingSection">
+      <h2>🔮 塔罗解读</h2>
+      <div class="reading-content" id="readingContent"></div>
+      <button class="reset-btn" id="resetBtn">重新占卜</button>
+    </section>
+
+    <footer class="footer">
+      <p>🌟 塔罗牌指引内心，命运掌握在自己手中 🌟</p>
+    </footer>
+  </div>
+
+  <script src="tarot-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

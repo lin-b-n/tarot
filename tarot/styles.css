@@ -1,0 +1,546 @@
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'SimSun', serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  min-height: 100vh;
+  color: #e8d5b7;
+  overflow-x: hidden;
+}
+
+/* 星空背景 */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stars {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffe, #0000),
+    radial-gradient(2px 2px at 40px 70px, #fff, #0000),
+    radial-gradient(1px 1px at 90px 40px, #ffe, #0000),
+    radial-gradient(1px 1px at 160px 120px, #fff, #0000);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkle 4s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.stars2 {
+  background-image: 
+    radial-gradient(1px 1px at 50px 50px, #ffd700, #0000),
+    radial-gradient(1px 1px at 150px 100px, #ffd700, #0000),
+    radial-gradient(2px 2px at 250px 80px, #ffd700, #0000);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: twinkle 6s ease-in-out infinite reverse;
+  opacity: 0.5;
+}
+
+.stars3 {
+  background-image: 
+    radial-gradient(3px 3px at 100px 150px, #e6e6fa, #0000),
+    radial-gradient(2px 2px at 300px 50px, #e6e6fa, #0000);
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  animation: twinkle 8s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+/* 主容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 标题区 */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.moon {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff8dc, #ffd700, #daa520);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 40px #ffd700, 0 0 80px #ffa500;
+  position: relative;
+}
+
+.moon-crater {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle, #b8860b, #8b6914);
+  border-radius: 50%;
+  top: 20px;
+  left: 25px;
+}
+
+.moon-crater.small {
+  width: 10px;
+  height: 10px;
+  top: 45px;
+  left: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #ffd700, #fff8dc, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.subtitle {
+  color: #b8a9c9;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* 牌阵选择 */
+.spread-selection {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.spread-selection h2 {
+  color: #ffd700;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.spread-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.spread-card {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.2), rgba(75, 0, 130, 0.3));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  padding: 25px 20px;
+  width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spread-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+}
+
+.spread-card.selected {
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.4), rgba(75, 0, 130, 0.5));
+}
+
+.spread-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.spread-card h3 {
+  color: #ffd700;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.spread-card p {
+  color: #b8a9c9;
+  font-size: 0.9rem;
+}
+
+/* 问题输入区 */
+.question-section {
+  text-align: center;
+  padding: 30px 20px;
+  display: none;
+}
+
+.question-section h2 {
+  color: #ffd700;
+  margin-bottom: 20px;
+}
+
+.question-input {
+  width: 100%;
+  max-width: 500px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  color: #e8d5b7;
+  font-size: 1rem;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+.question-input::placeholder {
+  color: #888;
+}
+
+.question-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.draw-btn {
+  background: linear-gradient(145deg, #8a2be2, #4b0082);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 30px;
+  padding: 15px 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.draw-btn:hover {
+  background: linear-gradient(145deg, #9a4bff, #5b00a2);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  transform: scale(1.05);
+}
+
+/* 抽牌区 */
+.card-area {
+  padding: 40px 20px;
+  display: none;
+  min-height: 400px;
+}
+
+.cards-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-height: 350px;
+}
+
+/* 单张牌阵 */
+.cards-layout.single {
+  flex-direction: column;
+}
+
+/* 三张牌阵 */
+.cards-layout.three {
+  gap: 40px;
+}
+
+.cards-layout.three .card-slot {
+  text-align: center;
+}
+
+/* 凯尔特十字 */
+.cards-layout.celtic {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+/* 牌位 */
+.card-slot {
+  position: relative;
+  width: 140px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+.card-slot.celtic-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-slot.celtic-cross-h {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.card-slot.celtic-cross-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.card-slot.celtic-1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.card-slot.celtic-2 { position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); }
+.card-slot.celtic-3 { position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); }
+.card-slot.celtic-4 { position: absolute; top: 50%; left: 35%; transform: translate(-50%, -50%); }
+.card-slot.celtic-5 { position: absolute; top: 50%; left: 65%; transform: translate(-50%, -50%); }
+.card-slot.celtic-6 { position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%); }
+.card-slot.celtic-7 { position: absolute; top: 75%; left: 50%; transform: translate(-50%, -50%); }
+.card-slot.celtic-8 { position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%); }
+.card-slot.celtic-9 { position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%); }
+.card-slot.celtic-10 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin-top: 120px; }
+
+.card-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.card-wrapper.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #1a1a4e, #2d1b69);
+  border: 2px solid #ffd700;
+  cursor: pointer;
+}
+
+.card-back::before {
+  content: '✦';
+  font-size: 3rem;
+  color: #ffd700;
+}
+
+.card-back::after {
+  content: '塔罗';
+  font-size: 1.2rem;
+  color: #b8a9c9;
+  margin-top: 10px;
+}
+
+.card-back:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 255, 0.5);
+}
+
+.card-front {
+  background: linear-gradient(145deg, #2d1b69, #1a1a4e);
+  border: 2px solid #ffd700;
+  transform: rotateY(180deg);
+  padding: 10px;
+  text-align: center;
+}
+
+.card-front .card-image {
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.card-front .card-name {
+  color: #ffd700;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.card-front .card-number {
+  color: #b8a9c9;
+  font-size: 0.7rem;
+}
+
+.card-slot-label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #b8a9c9;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* 解读区 */
+.reading-section {
+  padding: 40px 20px;
+  display: none;
+  text-align: center;
+}
+
+.reading-section h2 {
+  color: #ffd700;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.reading-content {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: left;
+}
+
+.reading-card {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.15), rgba(75, 0, 130, 0.25));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.reading-card:nth-child(1) { animation-delay: 0.1s; }
+.reading-card:nth-child(2) { animation-delay: 0.2s; }
+.reading-card:nth-child(3) { animation-delay: 0.3s; }
+.reading-card:nth-child(4) { animation-delay: 0.4s; }
+.reading-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reading-card h3 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.reading-card .card-position {
+  color: #b8a9c9;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.reading-card .keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.reading-card .keyword-tag {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.reading-card .meaning {
+  line-height: 1.8;
+  color: #e8d5b7;
+}
+
+.reading-card .meaning.reversed {
+  color: #ff9999;
+}
+
+.reset-btn {
+  background: transparent;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 25px;
+  padding: 12px 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* 底部 */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .spread-card {
+    width: 150px;
+    padding: 15px;
+  }
+  
+  .card-slot {
+    width: 110px;
+    height: 170px;
+  }
+  
+  .cards-layout.celtic {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .card-slot.celtic-* {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 10px auto;
+  }
+}
+
+/* 加载动画 */
+.loading {
+  text-align: center;
+  padding: 50px;
+}
+
+.loading::before {
+  content: '🔮';
+  font-size: 3rem;
+  animation: pulse 1.5s ease-in-out infinite;
+  display: block;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
